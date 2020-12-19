@@ -68,13 +68,15 @@ mismoAnio(BandasConMismoAnio, AnioDeFormacion):- banda(Banda, _, _, _),
 %-----------------------------------------------------------------------------------
 
 
-bandaConMasIntegrantesEnFestival(Festival, Banda):-forall(bandasConfirmadas(Festival,BandasConfirmadas),
-							(member(Banda, BandasConfirmadas),bandaConMasIntegrantes(Banda, _))).
+bandaConMasIntegrantesEnFestival(Festival, Banda):-bandaIntegrantes(Banda, Cantidad),
+													forall(bandasConfirmadas(Festival,BandasConfirmadas),
+													(member(Banda, BandasConfirmadas),
+														bandaIntegrantes(_, Cantidad2), Cantidad > Cantidad2)).
 
-bandaConMasIntegrantes(Banda, Integrantes):-banda(Banda, _, _, Integrantes), 
-								forall((banda(OtraBanda, _, _, Integrantes), Banda \= OtraBanda),
-									(banda(OtraBanda, _, _, OtrosIntegrantes), length(Integrantes,CantidadIntegrantes), length(OtrosIntegrantes,CantidadOtrosIntegrantes),
-									CantidadIntegrantes > CantidadOtrosIntegrantes)).			 
+
+bandaIntegrantes(Banda, Cantidad):- banda(Banda, _, _, Integrantes), length(Integrantes, Cantidad).
+
+	 
 
 
 
