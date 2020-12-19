@@ -7,18 +7,6 @@ banda(oceania, 1978, lasHeras, [jose, juanito, juancito, mic, ian]).
 banda(brazoFuerte, 1914, nuevaOrleans, [luis]).
 
 
-banda(berazoFuerte, 1914, nuevaOrleans, [luis]).
-banda(brazdoFuerte, 1914, nuevaOrleans, [luis]).
-banda(brazoFuerte, 1914, nuevaOrleans, [luis]).
-banda(braszoFuerte, 1914, nuevaOrleans, [luis]).
-banda(brazoFuerte, 1914, nuevaOrleans, [luis]).
-banda(brasszoFuerte, 1914, nuevaOrleans, [luis]).
-banda(brazoFuaerte, 1914, nuevaOrleans, [luis]).
-banda(barsssazoFuerte, 1914, nuevaOrleans, [luis]).
-banda(brazoaFuerte, 1914, nuevaOrleans, [luis]).
-banda(brasazaoFauerte, 1914, nuevaOrleans, [luis]).
-
-
 
 %genero(NombreBanda, Genero).
 genero(finta, pop(20, 7)).
@@ -68,8 +56,8 @@ seGraba(Festival):-festival(Festival,_), forall((bandasConfirmadas(Festival,Band
 
 %----------------------------------------------------------------------------------
 
-anioHistorico(Anio):-findall(Anio, mismoAnio(_, Anio), Bandas), 
-					 length(Bandas, Cantidad), Cantidad > 10.
+anioHistorico(Anio):-mismoAnio(BandasConMismoAnio, Anio),
+					 length(BandasConMismoAnio, Cantidad), Cantidad > 10.
 
 
 mismoAnio(BandasConMismoAnio, AnioDeFormacion):- banda(Banda, _, _, _), 
